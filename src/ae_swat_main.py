@@ -8,7 +8,6 @@ train_loader, val_loader, test_loader = swat_data.get_dataloader()
 w_size = swat_data.window_size * swat_data.input_feature_dim
 z_size = swat_data.window_size * 5
 
-
 model = AE(w_size=w_size, z_size=z_size)
 
 is_train = False

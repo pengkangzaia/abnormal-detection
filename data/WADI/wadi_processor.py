@@ -54,9 +54,8 @@ class WADI:
             abnormal_idx = abnormal.index
             labels[abnormal_idx] = 1
         # 通过滑动窗口的y对应的label值
-        _, sliding_labels = self.sliding_windows(labels)
-        sliding_labels = sliding_labels.astype(np.int32)
-        return sliding_labels
+        labels = labels[self.window_size:]
+        return labels
 
     def __init__(self, batch_size, window_size=12, read_rows=None):
         self.read_rows = read_rows
