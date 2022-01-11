@@ -73,9 +73,10 @@ class LSTMVAE(nn.Module):
 
     # validation
     def validation_step(self, input, n):
-        input_hat = self.forward(input)
-        recon_loss = self.loss_function(input, input_hat, self.mean, self.sigma)
-        return {'val_loss': recon_loss}
+        with torch.no_grad():
+            input_hat = self.forward(input)
+            recon_loss = self.loss_function(input, input_hat, self.mean, self.sigma)
+            return {'val_loss': recon_loss}
 
     def validation_epoch_end(self, outputs):
         batch_losses = [x['val_loss'] for x in outputs]
