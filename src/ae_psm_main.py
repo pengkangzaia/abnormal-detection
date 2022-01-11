@@ -2,10 +2,10 @@ from algorithm.ae import *
 from data.PSM import psm_processor
 from utils.eval_methods import *
 from utils.utils import *
-psm_data = psm_processor.PSM(batch_size=1000, window_size=12, read_rows=5000)
+psm_data = psm_processor.PSM(batch_size=1000, window_size=12, read_rows=10000)
 train_loader, val_loader, test_loader = psm_data.get_dataloader()
 w_size = psm_data.window_size * psm_data.input_feature_dim
-z_size = psm_data.window_size * 5
+z_size = psm_data.window_size * 3
 
 model = AE(w_size=w_size, z_size=z_size)
 

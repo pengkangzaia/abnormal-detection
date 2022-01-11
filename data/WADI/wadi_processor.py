@@ -96,17 +96,17 @@ class WADI:
 
         self.train_loader = torch.utils.data.DataLoader(data_utils.TensorDataset(
             torch.from_numpy(windows_normal_train).float().view(
-                ([windows_normal_train.shape[0], windows_normal_train.shape[1] * windows_normal_train.shape[2]]))
+                ([windows_normal_train.shape[0], windows_normal_train.shape[1], windows_normal_train.shape[2]]))
         ), batch_size=batch_size, shuffle=False, num_workers=0)
 
         self.val_loader = torch.utils.data.DataLoader(data_utils.TensorDataset(
             torch.from_numpy(windows_normal_val).float().view(
-                ([windows_normal_val.shape[0], windows_normal_train.shape[1] * windows_normal_train.shape[2]]))
+                ([windows_normal_val.shape[0], windows_normal_train.shape[1], windows_normal_train.shape[2]]))
         ), batch_size=batch_size, shuffle=False, num_workers=0)
 
         self.test_loader = torch.utils.data.DataLoader(data_utils.TensorDataset(
             torch.from_numpy(windows_attack).float().view(
-                ([windows_attack.shape[0], windows_attack.shape[1] * windows_attack.shape[2]]))
+                ([windows_attack.shape[0], windows_attack.shape[1], windows_attack.shape[2]]))
         ), batch_size=batch_size, shuffle=False, num_workers=0)
 
         self.input_feature_dim = windows_normal.shape[2]
